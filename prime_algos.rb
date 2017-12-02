@@ -2,7 +2,7 @@ class PrimeAlgos
 
 	# Returns prime factors of n
 	def self.factors n
-		# Factor output
+		# Factors output
 		factors = []
 		# Start with 2
 		d = 2
