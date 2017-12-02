@@ -2,7 +2,7 @@ class SearchAlgos
 
 	# Binary search
 	# Returns nil if number is not in the array
-	# Returns number as the posistion of the num in the array
+	# Otherwise it returns the numbers position
 	def self.binary_search arr, x
 		# Set the left and right pointers
 		i = 0
