@@ -54,10 +54,9 @@ class NumberAlgos
 	end
 
 	# str is a string eg. base 3: "120211"
-	# 'a' and 'A' are evaluated the same
+	# 'a' = 'A'
 	def self.to_10_base str, base
 		# Conversion from str to number
-		# Array of the same length
 		num = Array.new str.length
 		# Split into letters
 		str.split('').each_index do |i|
