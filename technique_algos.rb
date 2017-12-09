@@ -20,14 +20,47 @@ class TechniqueAlgos
 		arr
 	end
 
+	# Reverse array
+	def self.reverse_arr(arr)
+		left = 0
+		right = arr.length - 1
+		limit = arr.length / 2
+		until left >= right
+			tmp = arr[left]
+			arr[left] = arr[right]
+			arr[right] = tmp
+			left += 1
+			right -= 1
+		end
+		arr
+	end
+
 	# Recursively swap the elements of an array
-	def self.reverse_arr(arr, left = 0, right = arr.length - 1)
+	def self.reverse_arr_recursively(arr, left = 0, right = arr.length - 1)
 		return arr if left >= right
-		swapper = arr[left]
+		tmp = arr[left]
 		arr[left] = arr[right]
-		arr[right] = swapper
-		return reverse_arr arr, left + 1, right - 1
+		arr[right] = tmp
+		return reverse_arr_recursively arr, left + 1, right - 1
 	end
 
 end
 
+puts (TechniqueAlgos.reverse_arr [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]).to_s
+require 'benchmark'
+
+Benchmark.bm do |bm|
+
+	bm.report "Nor" do
+		1000000.times do
+			TechniqueAlgos.reverse_arr([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
+		end
+	end
+
+	bm.report "Rec" do
+		1000000.times do
+			TechniqueAlgos.reverse_arr_recursively([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
+		end
+	end
+
+end
