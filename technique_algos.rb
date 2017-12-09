@@ -20,4 +20,14 @@ class TechniqueAlgos
 		arr
 	end
 
+	# Recursively swap the elements of an array
+	def self.reverse_arr(arr, left = 0, right = arr.length - 1)
+		return arr if left >= right
+		swapper = arr[left]
+		arr[left] = arr[right]
+		arr[right] = swapper
+		return reverse_arr arr, left + 1, right - 1
+	end
+
 end
+

@@ -14,6 +14,15 @@ class NumberAlgos
 		x == 0 ? y : x
 	end
 
+	# Greatest common divisor, euclidean algorithm, recursively
+	def self.gcd_recursively x, y
+		if y == 0
+			return x
+		else
+			return gcd_recursively y, x % y
+		end
+	end
+
 	# Least common multiple
 	def self.lcm x, y
 		(x * y) / gcd(x, y)
@@ -86,4 +95,16 @@ class NumberAlgos
 		arr.reverse.join
 	end
 
+	# From 10 base to 2 base, output is a number in binary
+	def self.to_2_base_recursively num
+		remainder = num % 2
+		div = num / 2
+		if div == 0
+			return remainder
+		else
+			return to_2_base_recursively(div) * 10 + remainder
+		end
+	end
+
 end
+

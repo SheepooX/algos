@@ -25,4 +25,16 @@ class SearchAlgos
 		return nil
 	end
 
+	def self.recursive_binary_search arr, x, left = 0, right = arr.length - 1
+		return nil unless right >= left
+		middle = (left + right) / 2
+		if arr[middle] == x
+			return middle
+		elsif x < arr[middle]
+			return recursive_binary_search(arr, x, left, middle - 1)
+		else
+			return recursive_binary_search(arr, x, middle + 1, right)
+		end
+	end
+
 end
