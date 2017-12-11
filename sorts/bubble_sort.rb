@@ -1,5 +1,19 @@
 class BubbleSort
 
+	def self.sort2 arr
+		(1...arr.length).each do |i|
+			j = arr.length - 1
+			while j >= i
+				if arr[j] < arr[j - 1]
+					tmp = arr[j - 1]
+					arr[j - 1] = arr[j]
+					arr[j] = tmp
+				end
+				j -= 1
+			end
+		end
+	end
+
 	def self.sort(arr)
 		# Limits the BubbleSort at the end of the array
 		limit = 1
