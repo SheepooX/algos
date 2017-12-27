@@ -37,4 +37,31 @@ class SearchAlgos
 		end
 	end
 
+	def self.simple_text_search text, frag
+		i = 0
+		j = 0
+		# Until the i is out of bounds or the fragment is found
+		while i < text.length and j < frag.length
+			# If it does not equal reset and put i at the proper posistion
+			# text = "xxxxr", frag = "xxxr"
+			# i j
+			# 0 0
+			# 1 1
+			# 2 2
+			# 3 3 # mismatch
+			# 1 0
+			# 2 1
+			# 3 2
+			# 4 3
+			# 4 4 # FOUND frag
+			if text[i] != frag[j]
+				i -= 1
+				j = -1
+			end
+			i += 1
+			j += 1
+		end
+		j == frag.length ? true : false
+	end
+
 end

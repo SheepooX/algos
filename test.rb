@@ -1,20 +1,26 @@
 require 'benchmark'
-require './sorts/bubble_sort.rb'
+require './search_algos.rb'
 
-ITERS = 10 ** 6
+ITERS = 10**(ARGV[0].to_i)
+
+puts (SearchAlgos.simple_text_search "ahojjaksemas", "jakse")
+puts (SearchAlgos.simple_text_search "ahojemas", "ahoj")
+puts (SearchAlgos.simple_text_search "ahojemas", "emas")
+puts (SearchAlgos.simple_text_search "lolow", "low")
 
 Benchmark.bm do |bm|
 
-	bm.report "NEW" do
+	bm.report do
 		ITERS.times do
-			BubbleSort.sort2 [9, 8, 7, 6, 5, 4, 3, 1, 0, -1, -3, -4, -5, -6]
+			SearchAlgos.simple_text_search "hello how are you", "how"
 		end
 	end
 
 	bm.report do
 		ITERS.times do
-			BubbleSort.sort [9, 8, 7, 6, 5, 4, 3, 1, 0, -1, -3, -4, -5, -6]
+			puts SearchAlgos.simple_text_search("hello hhow are you", "how")
 		end
 	end
 
 end
+
