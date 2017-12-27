@@ -12,6 +12,7 @@ class BubbleSort
 				j -= 1
 			end
 		end
+		arr
 	end
 
 	def self.sort(arr)
