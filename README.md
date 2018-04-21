@@ -1,7 +1,7 @@
 # algos
 My implementations of some algorithms.<br>
 
-Currently implemented algorithms:<br>
+# Currently implemented algorithms:<br>
 
 primality test, prime factorization and sieve,<br>
 binary and simple text search,<br>
