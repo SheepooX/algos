@@ -37,11 +37,12 @@ class SearchAlgos
 		end
 	end
 
-	def self.simple_text_search text, frag
+    # This apparently does not work
+	def self.simple_text_search haystack, needle
 		i = 0
 		j = 0
 		# Until the i is out of bounds or the fragment is found
-		while i < text.length and j < frag.length
+		while i < haystack.length and j < needle.length
 			# If it does not equal reset and put i at the proper posistion
 			# text = "xxxxr", frag = "xxxr"
 			# i j
@@ -54,14 +55,48 @@ class SearchAlgos
 			# 3 2
 			# 4 3
 			# 4 4 # FOUND frag
-			if text[i] != frag[j]
+			if haystack[i] != needle[j]
 				i -= 1
 				j = -1
 			end
 			i += 1
 			j += 1
 		end
-		j == frag.length ? true : false
+		j == needle.length ? true : false
 	end
 
+    # Returns the ranges where needle is located in haystack
+    def self.kmp haystack, needle
+      fail_func = Array.new(needle.length, 0)
+
+      step = -> (i, char) {
+        if i < needle.length and needle[i] == char
+          return i + 1
+        elsif i > 0
+          return step.call(fail_func[i - 1], char)
+        else
+          return 0
+        end
+      }
+
+      # Construct an array that tells us where to return in needle
+      # when haystack does not match
+      (1...needle.length).each do |i|
+        fail_func[i] = step.call(fail_func[i - 1], needle[i])
+      end
+      puts fail_func.to_s
+
+      # Find needle in haystack
+      state = 0
+      answers = Array.new()
+      (0...haystack.length).each do |i|
+        state = step.call(state, haystack[i])
+        if state == needle.length
+          answers << [i - needle.length + 1, i]
+        end
+      end
+      return answers
+    end
+
 end
+
