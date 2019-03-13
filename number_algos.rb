@@ -70,7 +70,7 @@ class NumberAlgos
 			val -= 87 if 96 < val and val < 123
 			num[i] = val
 		end
-		# User Horner's method
+		# Use Horner's method
 		NumberAlgos.horners_method num, base
 	end
 
